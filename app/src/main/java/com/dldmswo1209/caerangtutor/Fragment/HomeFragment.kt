@@ -30,16 +30,21 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.function.observe(viewLifecycleOwner, Observer {
+        viewModel.function.observe(viewLifecycleOwner){
             val function = it.firstOrNull()
             binding.resultTextView.text = function?.content
-        })
+            if(function == null){
+                binding.resultTextView.text = "함수가 존재하지 않습니다."
+            }
+        }
 
         binding.functionNameEditText.addTextChangedListener(object: TextWatcher{
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
             override fun onTextChanged(text: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                viewModel.getFunction("funcName", text.toString())
+                val keyword = text.toString()
+                if(keyword == "") return
+                viewModel.getFunction(keyword)
             }
 
             override fun afterTextChanged(p0: Editable?) {}

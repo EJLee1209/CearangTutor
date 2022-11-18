@@ -6,6 +6,6 @@ import com.dldmswo1209.caerangtutor.retrofitApi.RetrofitInstance
 class Repository {
     private val retrofit = RetrofitInstance.getInstance().create(MyApi::class.java)
 
-    suspend fun getFunction(searchType: String, keyWord: String) = retrofit.getFunction(searchType, keyWord)
+    suspend fun getFunction(keyword: String) = retrofit.getFunction(keyword)
 
 }

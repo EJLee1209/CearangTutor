@@ -1,17 +1,31 @@
 package com.dldmswo1209.caerangtutor.retrofitApi
 
 import com.dldmswo1209.caerangtutor.model.Function
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.Query
+import com.dldmswo1209.caerangtutor.model.SignInBody
+import com.dldmswo1209.caerangtutor.model.SignUpBody
+import retrofit2.Call
+import retrofit2.http.*
 
 interface MyApi {
 
-    @GET("/func")
+    // 함수 이름으로 코드 가져오기
+    @GET("/func/funcName/{keyword}")
     suspend fun getFunction(
-        @Query("searchType") searchType : String,
-        @Query("keyWord") keyWord : String
+        @Path("keyword") keyword: String
     ) : List<Function>
+
+    // 회원가입
+    @POST("/user/signup")
+    fun signUp(
+        @Body signUpBody: SignUpBody
+    ) :Call<String>
+
+    // 로그인
+    @POST("/user/login")
+    fun signIn(
+        @Body signInBody: SignInBody
+    ) : Call<SignUpBody>
+
 
 }
 

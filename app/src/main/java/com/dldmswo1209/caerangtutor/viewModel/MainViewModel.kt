@@ -15,8 +15,8 @@ class MainViewModel: ViewModel() {
     val function : LiveData<List<Function>>
         get() = _function
 
-    fun getFunction(searchType: String, keyWord: String) = viewModelScope.launch {
-        _function.postValue(repository.getFunction(searchType, keyWord))
+    fun getFunction(keyWord: String) = viewModelScope.launch {
+        _function.postValue(repository.getFunction(keyWord))
     }
 
 }

@@ -18,7 +18,7 @@
         android:layout_marginTop="120dp"/>
 
     <EditText
-        android:id="@+id/inputIdEditText"
+        android:id="@+id/studentIdEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/image"
@@ -27,13 +27,13 @@
         android:layout_marginTop="60dp"
         android:layout_marginStart="80dp"
         android:layout_marginEnd="80dp"
-        android:hint="아이디"/>
+        android:hint="학번"/>
 
     <EditText
-        android:id="@+id/inputPwEditText"
+        android:id="@+id/passwordEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/inputIdEditText"
+        app:layout_constraintTop_toBottomOf="@id/studentIdEditText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="20dp"
@@ -48,7 +48,7 @@
         android:layout_height="wrap_content"
         android:text="회원가입"
         android:textColor="@color/teal_700"
-        app:layout_constraintTop_toBottomOf="@id/inputPwEditText"
+        app:layout_constraintTop_toBottomOf="@id/passwordEditText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="10dp"/>
