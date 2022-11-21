@@ -13,11 +13,15 @@
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:statusBarColor">@color/white</item>
         <!-- Customize your theme here. -->
+
     </style>
 
     <style name="custom_theme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:statusBarColor" tools:targetApi="l">@color/main_background</item>
         <item name="android:windowLightStatusBar">false</item>
 
+
     </style>
+
+
 </resources>

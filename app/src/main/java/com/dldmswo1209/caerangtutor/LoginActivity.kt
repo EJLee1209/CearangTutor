@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
 import com.dldmswo1209.caerangtutor.databinding.ActivityLoginBinding
 import com.dldmswo1209.caerangtutor.model.SignInBody
 import com.dldmswo1209.caerangtutor.model.SignUpBody
