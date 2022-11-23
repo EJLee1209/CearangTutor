@@ -39,6 +39,7 @@ class LoginActivity : AppCompatActivity() {
             retrofit.signIn(signInBody).enqueue(object: Callback<SignUpBody>{
                 override fun onResponse(call: Call<SignUpBody>, response: Response<SignUpBody>) {
                     val user = response.body() ?: return
+
                     val intent = Intent(this@LoginActivity, MainActivity::class.java)
                     intent.putExtra("currentUser", user)
                     startActivity(intent)

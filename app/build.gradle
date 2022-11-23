@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "com.dldmswo1209.caerangtutor"
-        minSdk 26
+        minSdk 21
         targetSdk 32
         versionCode 1
         versionName "1.0"
