@@ -18,12 +18,12 @@
         android:layout_marginEnd="20dp"/>
 
     <ImageView
+        android:id="@+id/writeButton"
         android:layout_width="50dp"
         android:layout_height="50dp"
         app:srcCompat="@drawable/icon_write"
         android:layout_gravity="bottom|end"
         android:layout_margin="20dp"/>
-
 
 
 </FrameLayout>
