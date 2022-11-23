@@ -1,6 +1,7 @@
 package com.dldmswo1209.caerangtutor.retrofitApi
 
 import com.dldmswo1209.caerangtutor.model.Function
+import com.dldmswo1209.caerangtutor.model.AddFunctionBody
 import com.dldmswo1209.caerangtutor.model.SignInBody
 import com.dldmswo1209.caerangtutor.model.SignUpBody
 import retrofit2.Call
@@ -26,6 +27,10 @@ interface MyApi {
         @Body signInBody: SignInBody
     ) : Call<SignUpBody>
 
+    @POST("/func")
+    fun addFunction(
+        @Body functionAddBody: AddFunctionBody
+    ): Call<String>
 
 }
 

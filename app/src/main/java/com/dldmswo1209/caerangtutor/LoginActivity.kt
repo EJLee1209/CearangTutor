@@ -11,6 +11,8 @@ import com.dldmswo1209.caerangtutor.model.SignInBody
 import com.dldmswo1209.caerangtutor.model.SignUpBody
 import com.dldmswo1209.caerangtutor.retrofitApi.MyApi
 import com.dldmswo1209.caerangtutor.retrofitApi.RetrofitInstance
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -19,7 +21,7 @@ class LoginActivity : AppCompatActivity() {
     private val binding by lazy{
         ActivityLoginBinding.inflate(layoutInflater)
     }
-    private val retrofit = RetrofitInstance.getInstance().create(MyApi::class.java)
+    private val auth = Firebase.auth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,34 +30,28 @@ class LoginActivity : AppCompatActivity() {
             startActivity(Intent(this, RegisterActivity::class.java))
         }
         binding.loginButton.setOnClickListener {
-            val studentId = binding.studentIdEditText.text.toString()
+            val email = binding.emailEditText.text.toString()
             val password = binding.passwordEditText.text.toString()
 
-            if(studentId == "" || password == ""){
+            if(email == "" || password == ""){
                 Toast.makeText(this, "모든 정보를 입력해주세요",Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            val signInBody = SignInBody(studentId, password)
-            retrofit.signIn(signInBody).enqueue(object: Callback<SignUpBody>{
-                override fun onResponse(call: Call<SignUpBody>, response: Response<SignUpBody>) {
-                    val user = response.body() ?: return
 
-                    val intent = Intent(this@LoginActivity, MainActivity::class.java)
-                    intent.putExtra("currentUser", user)
-                    startActivity(intent)
-
-                    // 자동로그인을 위해 로그인한 사용자의 학번을 저장
+            auth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
+                if(it.isSuccessful){
+                    val uid = auth.currentUser?.uid
                     val sharedPreferences = getSharedPreferences("isLogin", Context.MODE_PRIVATE)
-                    sharedPreferences.edit().putString("studentId", user.studentId).apply()
+                    sharedPreferences.edit().putString("uid", uid.toString()).apply()
 
-                    finish()
+                    startActivity(Intent(this, MainActivity::class.java))
+                }else{
+                    Toast.makeText(this, "이메일 또는 비밀번호 오류", Toast.LENGTH_SHORT).show()
                 }
+            }
 
-                override fun onFailure(call: Call<SignUpBody>, t: Throwable) {
-                    Log.d("testt", "onFailure: ${t.message}")
-                }
 
-            })
+
 
         }
     }
