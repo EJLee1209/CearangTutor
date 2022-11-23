@@ -18,6 +18,10 @@ class MainViewModel: ViewModel() {
     val function : LiveData<List<Function>>
         get() = _function
 
+    private var _functionListFromAuthor = MutableLiveData<List<Function>>()
+    val functionListFromAuthor : LiveData<List<Function>>
+        get() = _functionListFromAuthor
+
     private var _addFunctionResponse = MutableLiveData<String>()
     val addFunctionResponse : LiveData<String>
         get() = _addFunctionResponse
@@ -25,6 +29,10 @@ class MainViewModel: ViewModel() {
 
     fun getFunction(keyWord: String) = viewModelScope.launch {
         _function.postValue(repository.getFunction(keyWord))
+    }
+
+    fun getFunctionFromAuthor(keyWord: String) = viewModelScope.launch {
+        _functionListFromAuthor.postValue(repository.getFunctionFromAuthor(keyWord))
     }
 
 

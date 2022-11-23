@@ -4,7 +4,7 @@ data class User(
     val email: String,
     val password: String,
     val studentId: String,
-    val name: String,
+    var name: String,
     val team: String,
     val uid: String
 ){

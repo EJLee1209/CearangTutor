@@ -1,29 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragment.PostFragment"
-    android:background="@color/main_background">
+    android:background="@color/main_background"
+    android:orientation="vertical">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/postRecyclerView"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/editTextLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"/>
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp">
 
-    <ImageView
-        android:id="@+id/writeButton"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:srcCompat="@drawable/icon_write"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="20dp"/>
+        <EditText
+            android:id="@+id/searchNameEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:paddingTop="6dp"
+            android:hint="이름 검색"
+            android:textColorHint="@color/hint_gray"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/searchImageView"
+            android:background="@null"/>
+
+        <androidx.constraintlayout.utils.widget.ImageFilterView
+            android:id="@+id/searchImageView"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            app:srcCompat="@drawable/icon_search"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            app:layout_constraintTop_toBottomOf="@id/searchNameEditText"
+            android:background="@color/white_e0e0e0"
+            android:layout_marginTop="2dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/postRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"/>
+
+        <ImageView
+            android:id="@+id/writeButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:srcCompat="@drawable/icon_write"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="20dp"/>
 
 
-</FrameLayout>
+    </FrameLayout>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

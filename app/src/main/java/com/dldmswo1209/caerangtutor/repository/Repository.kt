@@ -19,6 +19,8 @@ class Repository {
 
     suspend fun getFunction(keyword: String) = retrofit.getFunction(keyword)
 
+    suspend fun getFunctionFromAuthor(keyword: String) = retrofit.getFunctionFromAuthor(keyword)
+
     fun getUserData(uid: String): LiveData<User> {
         var userData = MutableLiveData<User>()
         database.child("User/${uid}").addValueEventListener(object: ValueEventListener{

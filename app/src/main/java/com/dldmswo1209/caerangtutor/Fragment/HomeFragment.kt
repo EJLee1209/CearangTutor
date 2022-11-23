@@ -4,6 +4,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.text.method.ScrollingMovementMethod
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -37,6 +38,8 @@ class HomeFragment : Fragment(R.layout.fragment_home), AdapterView.OnItemSelecte
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.resultTextView.movementMethod = ScrollingMovementMethod()
 
         viewModel.function.observe(viewLifecycleOwner){
             it.forEach { func->

@@ -15,6 +15,11 @@ interface MyApi {
         @Path("keyword") keyword: String
     ) : List<Function>
 
+    @GET("/func/author/{keyword}")
+    suspend fun getFunctionFromAuthor(
+        @Path("keyword") keyword: String
+    ): List<Function>
+
     // 회원가입
     @POST("/user/signup")
     fun signUp(
