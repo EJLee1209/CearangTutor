@@ -5,14 +5,17 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.dldmswo1209.caerangtutor.R
 import com.dldmswo1209.caerangtutor.data.Post
 import com.dldmswo1209.caerangtutor.databinding.PostItemBinding
 
-class PostListAdapter : ListAdapter<Post, PostListAdapter.ViewHolder>(diffUtil) {
+class PostListAdapter(val postList: MutableList<Post>) : RecyclerView.Adapter<PostListAdapter.ViewHolder>() {
     inner class ViewHolder(private val binding: PostItemBinding) : RecyclerView.ViewHolder(binding.root){
         fun bind(post: Post){
             binding.userNameTextView.text = post.name
             binding.postTextView.text = post.text
+            binding.profileImageView.setImageResource(R.drawable.user)
+
         }
     }
 
@@ -21,20 +24,11 @@ class PostListAdapter : ListAdapter<Post, PostListAdapter.ViewHolder>(diffUtil) 
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(currentList[position])
+        holder.bind(postList[position])
     }
 
-    companion object{
-        private val diffUtil = object: DiffUtil.ItemCallback<Post>(){
-            override fun areItemsTheSame(oldItem: Post, newItem: Post): Boolean {
-                return oldItem == newItem
-            }
+    override fun getItemCount(): Int = postList.size
 
-            override fun areContentsTheSame(oldItem: Post, newItem: Post): Boolean {
-                return oldItem == newItem
-            }
 
-        }
-    }
 
 }

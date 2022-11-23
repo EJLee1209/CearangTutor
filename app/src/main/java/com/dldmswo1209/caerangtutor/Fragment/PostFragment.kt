@@ -10,12 +10,11 @@ import com.dldmswo1209.caerangtutor.databinding.FragmentPostBinding
 
 class PostFragment : Fragment(R.layout.fragment_post) {
     private lateinit var binding: FragmentPostBinding
-    private val adapter = PostListAdapter()
+    private val adapter = PostListAdapter(posts)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentPostBinding.bind(view)
 
         binding.postRecyclerView.adapter = adapter
-        adapter.submitList(posts)
     }
 }

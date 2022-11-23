@@ -17,10 +17,10 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"/>
 
-    <androidx.constraintlayout.utils.widget.ImageFilterView
+    <ImageView
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:src="@drawable/icon_write"
+        app:srcCompat="@drawable/icon_write"
         android:layout_gravity="bottom|end"
         android:layout_margin="20dp"/>
 

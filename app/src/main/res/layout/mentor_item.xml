@@ -10,15 +10,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="12dp">
-        <androidx.constraintlayout.utils.widget.ImageFilterView
+        <ImageView
             android:id="@+id/profileImageView"
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:src="@drawable/user"
-            android:tint="@color/white"
+            app:srcCompat="@drawable/user"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:tint="@color/white" />
 
         <TextView
             android:id="@+id/mentorNameTextView"
@@ -37,11 +37,11 @@
             app:layout_constraintTop_toTopOf="@id/profileImageView"
             app:layout_constraintBottom_toBottomOf="@id/profileImageView"/>
 
-        <androidx.constraintlayout.utils.widget.ImageFilterView
+        <ImageView
             android:id="@+id/rightArrowImageView"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/icon_right_arrow"
+            app:srcCompat="@drawable/icon_right_arrow"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>

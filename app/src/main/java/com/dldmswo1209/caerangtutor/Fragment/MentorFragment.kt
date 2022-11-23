@@ -11,13 +11,12 @@ import com.dldmswo1209.caerangtutor.databinding.FragmentMentorBinding
 
 class MentorFragment : Fragment(R.layout.fragment_mentor) {
     private lateinit var binding: FragmentMentorBinding
-    val adapter = MentorListAdapter()
+    val adapter = MentorListAdapter(mentors)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentMentorBinding.bind(view)
 
         binding.mentorRecyclerView.adapter = adapter
-        adapter.submitList(mentors)
 
     }
 }
